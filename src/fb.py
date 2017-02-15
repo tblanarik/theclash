@@ -8,7 +8,7 @@ saves the prediction as times.json
 import json
 import datetime
 
-def predict():
+def predict_time():
     """
     Loads the stored linear regressions, pulls the latest travel time,
     saves the prediction as times.json
@@ -33,8 +33,12 @@ def predict():
             "LynnwoodToSeattlePreviousPrediction":int(prev_data["LynnwoodToSeattlePrediction"]),
             "LastUpdated": mdt.strftime("%H:%M")}
 
+    history_file = open(r'/home/tblanarik/mysite/data/history.csv', 'a')
+    history_file.write("%s,%s" % (int(curtime), int(prev_data["LynnwoodToSeattlePrediction"])))
+    history_file.close()
+
     outfile = open(r'/home/tblanarik/mysite/data/times.json', 'w')
     json.dump(data, outfile)
     outfile.close()
 
-predict()
+predict_time()
