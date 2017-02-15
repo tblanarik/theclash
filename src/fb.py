@@ -34,7 +34,7 @@ def predict_time():
             "LastUpdated": mdt.strftime("%H:%M")}
 
     history_file = open(r'/home/tblanarik/mysite/data/history.csv', 'a')
-    history_file.write("%s,%s" % (int(curtime), int(prev_data["LynnwoodToSeattlePrediction"])))
+    history_file.write("%s,%s\n" % (int(curtime), int(prev_data["LynnwoodToSeattlePrediction"])))
     history_file.close()
 
     outfile = open(r'/home/tblanarik/mysite/data/times.json', 'w')
