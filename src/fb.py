@@ -34,7 +34,7 @@ def predict_time():
             "LynnwoodToSeattlePrediction": int(predict),
             "LynnwoodToSeattlePreviousPrediction":int(prev_data["LynnwoodToSeattlePrediction"]),
             "LastUpdated": mdt.strftime("%H:%M"),
-            "RSquared":round(rsq, 3)}
+            "RSquared":int(rsq*100.0)}
 
     history_file = open(r'/home/tblanarik/mysite/data/history.csv', 'a')
     history_file.write("%s,%s,%s\n" % (mdt.strftime("%H:%M"),
