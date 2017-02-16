@@ -26,12 +26,15 @@ def predict_time():
 
     predict = linreg['slope']*curtime + linreg['intercept']
 
+    rsq = linreg['r-value']*linreg['r-value']
+
     prev_data = json.load(open(r'/home/tblanarik/mysite/data/times.json'))
 
     data = {"LynnwoodToSeattleCurrent": curtime,
             "LynnwoodToSeattlePrediction": int(predict),
             "LynnwoodToSeattlePreviousPrediction":int(prev_data["LynnwoodToSeattlePrediction"]),
-            "LastUpdated": mdt.strftime("%H:%M")}
+            "LastUpdated": mdt.strftime("%H:%M"),
+            "RSquared":round(rsq, 3)}
 
     history_file = open(r'/home/tblanarik/mysite/data/history.csv', 'a')
     history_file.write("%s,%s,%s\n" % (mdt.strftime("%H:%M"),
